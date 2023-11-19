@@ -1,12 +1,10 @@
-// ignore_for_file: file_names
-
 import 'dart:async';
 
-import 'package:attendence/Admin/AdminPanel.dart';
-import 'package:attendence/Employee/EmployeeLogin.dart';
+import 'package:fieldpro/Admin/AdminPanel.dart';
+import 'package:fieldpro/Employee/EmployeeLogin.dart';
 
-import 'package:attendence/Widgets/IDField.dart';
-import 'package:attendence/Widgets/PassField.dart';
+import 'package:fieldpro/Widgets/IDField.dart';
+import 'package:fieldpro/Widgets/PassField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,13 +41,7 @@ class _AdminLoginState extends State<AdminLogin> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   const SnackBar(
-        //     content: Text(
-        //         'Pop Screen Disabled. You cannot go to previous screen.'),
-        //     backgroundColor: Colors.red,
-        //   ),
-        // );
+      
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             action: SnackBarAction(
@@ -262,7 +254,7 @@ class _AdminLoginState extends State<AdminLogin> {
         .get()
         .then(
       (DocumentSnapshot documentSnapshot) {
-        // if (documentSnapshot.exists) {
+     
         if (documentSnapshot.get('Role') == 'Admin') {
           Navigator.pushReplacement(
             context,
@@ -270,7 +262,6 @@ class _AdminLoginState extends State<AdminLogin> {
               builder: (context) => const AdminPanel(),
             ),
           );
-          // }
         } else if (documentSnapshot.get('Role') == 'Employee') {
           print("Admin Doesn't Exist in DataBase");
 
