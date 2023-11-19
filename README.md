@@ -25,7 +25,7 @@ FieldPro Connect is a cutting-edge workforce management and communication applic
 
 ## Issues
 
-If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/ZubiXDev/FieldProConnect/issues).
+If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/ZubiXDev/FieldPro-Connect/issues).
 
 ## Contact
 
