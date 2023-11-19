@@ -1,16 +1,13 @@
-// ignore_for_file: file_names
-
 import 'dart:io';
 import 'dart:math';
 
-import 'package:attendence/Admin/AdminPanel.dart';
-import 'package:attendence/Widgets/IDField.dart';
-import 'package:attendence/Widgets/PassField.dart';
-import 'package:attendence/Widgets/UserNameField.dart';
+import 'package:fieldpro/Admin/AdminPanel.dart';
+import 'package:fieldpro/Widgets/IDField.dart';
+import 'package:fieldpro/Widgets/PassField.dart';
+import 'package:fieldpro/Widgets/UserNameField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -25,7 +22,7 @@ class AddEmployee extends StatefulWidget {
 class _AddEmployeeState extends State<AddEmployee> {
   final _formkey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
-  // final newemp = FirebaseFirestore.instance;
+ 
   TextEditingController nunamecontroller = TextEditingController();
   TextEditingController neidcontroller = TextEditingController();
   TextEditingController nepasscontroller = TextEditingController();
@@ -38,10 +35,6 @@ class _AddEmployeeState extends State<AddEmployee> {
   var _currentItemSelected = "Employee";
   var role = "Employee";
 
-  // File? image;
-  // final ImagePicker _picker = ImagePicker();
-
-  // String imageURL = '';
 
   String profilePicLink = "";
 
@@ -71,9 +64,6 @@ class _AddEmployeeState extends State<AddEmployee> {
 
   @override
   Widget build(BuildContext context) {
-    // File file = File('');
-    // String _pathtext = '';
-    // dynamic imageFile = NetworkImage('');
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -233,25 +223,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                         ),
                         onPressed: () {
                           setState(() {
-                            // nunamecontroller.clear();
-                            // neidcontroller.clear();
-                            // nepasscontroller.clear();
-
-                            // newEmployee(
-                            //     newemp,
-                            //     nunamecontroller.text.trim(),
-                            //     neidcontroller.text.trim(),
-                            //     nepasscontroller.text.trim());
-                          });
-
-                          // if (imageURL.isEmpty) {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //     const SnackBar(
-                          //       content: Text("Please Upload an Image."),
-                          //       backgroundColor: Colors.red,
-                          //     ),
-                          //   );
-                          // } else if (imageURL.isNotEmpty) {
+                          
                           if (profilePicLink.isEmpty) {
                             print('Profile Pic is Required');
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -307,73 +279,7 @@ class _AddEmployeeState extends State<AddEmployee> {
     }
   }
 
-  // Future<Uri> uploadPic() async {
-  //   XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
-
-  //   Reference reference = FirebaseStorage.instance.ref().child('Employee Pic');
-
-  //   UploadTask uploadTask = reference.putFile(File(pickedImage.toString()));
-  //   await Future.value(uploadTask);
-
-  //   var newUrl = reference.getDownloadURL();
-  // }
-
-  // Future<void> _openImagePicker() async {
-  //   final XFile? pickedImage =
-  //       await _picker.pickImage(source: ImageSource.gallery);
-
-  //   if (pickedImage != null) {
-  //     setState(() {
-  //       image = File(pickedImage.path);
-
-  //       print("Path of Image:${pickedImage.path}");
-  //     });
-
-  //first comment
-  // if (pickedImage == null) return;
-  // String uniqueFileName =
-  //     DateTime.now().millisecondsSinceEpoch.toString();
-
-  // Reference referenceRoot = FirebaseStorage.instance.ref();
-  // Reference referenceDirImage = referenceRoot.child('Employee Pics');
-
-  // Reference referenceImageToUpload =
-  //     referenceDirImage.child(uniqueFileName);
-
-  // try {
-  //   await referenceImageToUpload.putFile(File(pickedImage.path));
-
-  //   imageURL = await referenceImageToUpload.getDownloadURL();
-  // } catch (error) {
-  //   print(error);
-  // }
-
-  //close first comment
-  //   }
-  // }
-  // void pickFile() async {
-  //   FilePickerResult? result =
-  //       await FilePicker.platform.pickFiles(type: FileType.image);
-  // }
-
-  // Future<void> newEmployee(
-  //   FirebaseFirestore newemp,
-  //   String ename,
-  //   String eid,
-  //   String epass,
-  // ) async {
-  //   var newEmployeeData = {
-  //     'Employee Name': ename,
-  //     'Employee ID': eid,
-  //     'Employee Password': epass,
-  //   };
-  //   await newemp
-  //       .collection('Employees Login')
-  //       .add(newEmployeeData)
-  //       .then((value) => print(value));
-  // }
-
-  void doneAdd(String pic, String username, String userid, String userpass,
+    void doneAdd(String pic, String username, String userid, String userpass,
       String role) async {
     const CircularProgressIndicator();
 
@@ -412,14 +318,7 @@ class _AddEmployeeState extends State<AddEmployee> {
         }
       }
     }
-    // return await _auth
-    //     .createUserWithEmailAndPassword(email: userid, password: userpass)
-    //     .then((value) => sendUserData(
-    //         profilePicLink.toString(),
-    //         nunamecontroller.text,
-    //         neidcontroller.text,
-    //         nepasscontroller.text,
-    //         role));
+  
   }
 
   sendUserData(String pic, String username, String userid, String userpass,
