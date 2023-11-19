@@ -12,7 +12,7 @@ FieldPro Connect is a cutting-edge workforce management and communication applic
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/FieldProConnect.git`
+1. Clone the repository: `git clone https://github.com/ZubiXDev/FieldPro-Connect.git`
 2. Navigate to the project directory: `cd FieldProConnect`
 3. Install dependencies: `flutter pub get`
 4. Run the app: `flutter run`
