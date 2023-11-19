@@ -1,10 +1,7 @@
-// ignore_for_file: file_names
-
 import 'dart:async';
 
-import 'package:attendence/Admin/InAppChat/ChatHome.dart';
-import 'package:attendence/Employee/EmployeeLogin.dart';
-import 'package:attendence/Employee/ShowAssignLocation.dart';
+import 'package:fieldpro/Employee/EmployeeLogin.dart';
+import 'package:fieldpro/Employee/ShowAssignLocation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,13 +18,12 @@ class EmployeePanel extends StatefulWidget {
 }
 
 class _EmployeePanelState extends State<EmployeePanel> {
-  // bool _dataadded = false;
+ 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final Location location = Location();
   User? user = FirebaseAuth.instance.currentUser;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  // StreamSubscription<LocationData>? _locationSubscription;
 
   @override
   void initState() {
@@ -103,24 +99,7 @@ class _EmployeePanelState extends State<EmployeePanel> {
                 ),
               ),
               drawer: 
-              // StreamBuilder(
-              //     stream: FirebaseFirestore.instance
-              //         .collection('Employees IDs')
-              //         .snapshots(),
-              //     builder: (contexts, AsyncSnapshot<QuerySnapshot> snapshots) {
-              //       if (_dataadded) {
-              //         print('Data');
-              //       }
-              //       if (!snapshots.hasData) {
-              //         return const Center(
-              //           child: CupertinoActivityIndicator(
-              //             radius: 30,
-              //             color: Colors.blueGrey,
-              //           ),
-              //         );
-              //       }
-              //       return 
-                    Drawer(
+             Drawer(
                       width: MediaQuery.of(context).size.width - 80,
                       child: ListView(
                         padding: EdgeInsets.zero,
@@ -153,13 +132,7 @@ class _EmployeePanelState extends State<EmployeePanel> {
                             ),
                           ),
                           ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ChatHome(user!.uid)));
-                            },
+                           
                             leading: const Icon(
                               Icons.message,
                               color: Colors.blueGrey,
@@ -188,13 +161,13 @@ class _EmployeePanelState extends State<EmployeePanel> {
                             title: const Text('Logout'),
                             onTap: () {
                               signOut();
-                              // _stopListening();
+                            
                             },
                           ),
                         ],
                       ),
                     ),
-                  // }),
+                
               backgroundColor: Colors.white,
               body: SafeArea(
                 child: Center(
@@ -222,33 +195,6 @@ class _EmployeePanelState extends State<EmployeePanel> {
                       const SizedBox(
                         height: 80,
                       ),
-
-                          // Mark My Attendence Button Start
-
-                      // SizedBox(
-                      //   height: 50,
-                      //   width: 290,
-                      //   child: ElevatedButton(
-                      //     style: ButtonStyle(
-                      //       shape: MaterialStateProperty.all<
-                      //           RoundedRectangleBorder>(
-                      //         RoundedRectangleBorder(
-                      //           borderRadius: BorderRadius.circular(20.0),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     onPressed: () {
-                      //       _listenLocation();
-                      //     },
-                      //     child: const Text(
-                      //       "Mark My ' Attendence '",
-                      //       style: TextStyle(color: Colors.white, fontSize: 18),
-                      //     ),
-                      //   ),
-                      // ),
-
-                        // Mark My Atendence Button End
-
                       const SizedBox(
                         height: 40,
                       ),
@@ -381,43 +327,6 @@ class _EmployeePanelState extends State<EmployeePanel> {
       openAppSettings();
     }
   }
-
-  // _getLocation() async {
-  //   try {
-  //     User? user = FirebaseAuth.instance.currentUser;
-
-  //     final LocationData locationResult = await location.getLocation();
-  //     await FirebaseFirestore.instance
-  //         .collection('Employees IDs')
-  //         .doc(user?.uid)
-  //         .set({
-  //       'latitude': locationResult.latitude,
-  //       'longitude': locationResult.longitude,
-  //     }, SetOptions(merge: true));
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-
-  // Future<void> _listenLocation() async {
-  //   _locationSubscription = location.onLocationChanged.handleError((onError) {
-  //     print(onError);
-  //     _locationSubscription?.cancel();
-  //     setState(() {
-  //       _locationSubscription = null;
-  //     });
-  //   }).listen((LocationData currentlocation) async {
-  //     User? user = FirebaseAuth.instance.currentUser;
-  //     await FirebaseFirestore.instance
-  //         .collection('Employees IDs')
-  //         .doc(user?.uid)
-  //         .set({
-  //       'latitude': currentlocation.latitude.toString(),
-  //       'longitude': currentlocation.longitude.toString(),
-  //       'Attendence Time': Timestamp.now(),
-  //     }, SetOptions(merge: true));
-  //   });
-  // }
 
   stopListening() {
     widget.locationSubscription?.cancel();
