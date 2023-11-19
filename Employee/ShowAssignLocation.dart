@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,11 +47,7 @@ class _ShowAssignLocationState extends State<ShowAssignLocation> {
                       snapshot.data!.docs.singleWhere((element) =>
                           element.id == widget.user_id)['Assign Longitude'],
                     ),
-                    markerId: const MarkerId('Assign Location'
-                        // snapshot.data!.docs.singleWhere(
-                        //       (element) => element.id == widget.user_id)[
-                        //   'Assign Location Time']
-                        ),
+                    markerId: const MarkerId('Assign Location'),
                     icon: BitmapDescriptor.defaultMarkerWithHue(
                         BitmapDescriptor.hueMagenta)),
               },
