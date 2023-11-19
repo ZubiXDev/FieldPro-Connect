@@ -1,5 +1,5 @@
-import 'package:attendence/Admin/AdminPanel.dart';
-import 'package:attendence/Admin/AssignLocation.dart';
+import 'package:fieldpro/Admin/AdminPanel.dart';
+import 'package:fieldpro/Admin/AssignLocation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -169,7 +169,7 @@ class _EmployeeProfileState extends State<EmployeeProfile> {
                                                 widget.user_id)['Employee ID'],
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            // fontSize: 16,
+                                          
                                             color: Colors.blueGrey),
                                       ),
                                     ],
