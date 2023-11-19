@@ -1,12 +1,9 @@
-// ignore_for_file: file_names
-
 import 'dart:async';
 
-import 'package:attendence/Employee/EmployeePanel.dart';
-import 'package:attendence/Admin/AdminLogin.dart';
-import 'package:attendence/Widgets/IDField.dart';
-import 'package:attendence/Widgets/PassField.dart';
-import 'package:attendence/Widgets/ShowSnackbarComp.dart';
+import 'package:fieldpro/Employee/EmployeePanel.dart';
+import 'package:fieldpro/Admin/AdminLogin.dart';
+import 'package:fieldpro/Widgets/IDField.dart';
+import 'package:fieldpro/Widgets/PassField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,14 +35,6 @@ class _EmployeeLoginState extends State<EmployeeLogin> {
     location.changeSettings(interval: 300, accuracy: LocationAccuracy.high);
     location.enableBackgroundMode(enable: true);
   }
-
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   super.dispose();
-
-  //   _listenLocation();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -141,9 +130,6 @@ class _EmployeeLoginState extends State<EmployeeLogin> {
                           ),
                           onPressed: () async {
                             logindone(eidcontroller.text, epasscontroller.text);
-                            setState(() {
-                              // _listenLocation();
-                            });
                           },
                           child: const Text(
                             'Login',
@@ -268,7 +254,6 @@ class _EmployeeLoginState extends State<EmployeeLogin> {
         .get()
         .then(
       (DocumentSnapshot documentSnapshot) {
-        // if (documentSnapshot.exists) {
         if (documentSnapshot.get('Role') == 'Employee') {
           _listenLocation();
           Navigator.pushReplacement(
@@ -279,13 +264,7 @@ class _EmployeeLoginState extends State<EmployeeLogin> {
             ),
           );
         }
-        // else {
-        //   Navigator.pushReplacement(
-        //       context,
-        //       MaterialPageRoute(
-        //           builder: (context) => const RealTimeLocation()));
-        // }
-        // }
+      
         else if (documentSnapshot.get('Role') == 'Admin') {
           print("Employee Doesn't Exist");
 
