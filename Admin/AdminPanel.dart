@@ -1,9 +1,6 @@
-// ignore_for_file: file_names
-
-import 'package:attendence/Admin/AddEmployee.dart';
-import 'package:attendence/Admin/AdminLogin.dart';
-import 'package:attendence/Admin/EmployeeProfile.dart';
-import 'package:attendence/Admin/InAppChat/ChatHome.dart';
+import 'package:fieldpro/Admin/AddEmployee.dart';
+import 'package:fieldpro/Admin/AdminLogin.dart';
+import 'package:fieldpro/Admin/EmployeeProfile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -146,23 +143,7 @@ class _AdminPanelState extends State<AdminPanel> {
                         color: Colors.blueGrey,
                       ),
                       title: const Text('Messages'),
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        // MaterialPageRoute(
-                        //     builder: (context) =>
-                        //     chatpage(
-                        //         email: snapshots.data!.docs.singleWhere(
-                        //             (element) =>
-                        //                 element.id ==
-                        //                 auth.currentUser!
-                        //                     .uid)['Employee Name'])));
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ChatHome(auth.currentUser!.uid)));
-                      },
+                     
                     ),
                     const ListTile(
                       leading: Icon(
@@ -333,7 +314,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                     color: Colors.white,
                                                     size: 30,
                                                   )
-                                                // Image.asset('assets/userpic.png')
+                                              
                                                 : Image.network(
                                                     snapshot.data!.docs[index]
                                                         ['Profile Pic'],
@@ -343,8 +324,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                   ),
                                           ),
 
-                                          // foregroundImage:
-                                          //     AssetImage('assets/userpic.png'),
+                                    
                                         ),
                                       ),
                                     ],
@@ -369,85 +349,6 @@ class _AdminPanelState extends State<AdminPanel> {
                 ),
               ),
 
-              // body: SafeArea(
-              //   child: Center(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         const Text(
-              //           'WELCOME',
-              //           style: TextStyle(
-              //               fontSize: 52,
-              //               fontWeight: FontWeight.bold,
-              //               color: Colors.blueGrey),
-              //         ),
-              //         const Text(
-              //           'ADMIN',
-              //           style: TextStyle(
-              //               fontSize: 40,
-              //               fontWeight: FontWeight.bold,
-              //               color: Colors.blueGrey),
-              //         ),
-              //         const SizedBox(
-              //           height: 40,
-              //         ),
-              //         SizedBox(
-              //           height: 50,
-              //           width: 290,
-              //           child: ElevatedButton(
-              //             style: ButtonStyle(
-              //               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              //                 RoundedRectangleBorder(
-              //                   borderRadius: BorderRadius.circular(20.0),
-              //                 ),
-              //               ),
-              //             ),
-              //             onPressed: () {
-              //               Navigator.push(
-              //                 context,
-              //                 MaterialPageRoute(
-              //                   builder: (context) => const AddEmployee(),
-              //                 ),
-              //               );
-              //             },
-              //             child: const Text(
-              //               'Create A New Employee ID',
-              //               style: TextStyle(color: Colors.white),
-              //             ),
-              //           ),
-              //         ),
-              //         const SizedBox(
-              //           height: 18,
-              //         ),
-              //         SizedBox(
-              //           height: 50,
-              //           width: 290,
-              //           child: ElevatedButton(
-              //             style: ButtonStyle(
-              //               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              //                 RoundedRectangleBorder(
-              //                   borderRadius: BorderRadius.circular(20.0),
-              //                 ),
-              //               ),
-              //             ),
-              //             onPressed: () {
-              //               Navigator.push(
-              //                 context,
-              //                 MaterialPageRoute(
-              //                   builder: (context) => const CheckEmployeeLocation(),
-              //                 ),
-              //               );
-              //             },
-              //             child: const Text(
-              //               'Check Employee Location',
-              //               style: TextStyle(color: Colors.white),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             );
           }),
     );
